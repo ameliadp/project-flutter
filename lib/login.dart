@@ -19,6 +19,7 @@ class _Login extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 60),
@@ -28,6 +29,8 @@ class _Login extends State<Login> {
               Center(
                 child: Column(
                   children: [
+                    Padding(padding: EdgeInsets.only(top: 70),
+                    ),
                     Image.asset(
                       'assets/images/pink-a.png',
                       width: 100,
@@ -54,8 +57,8 @@ class _Login extends State<Login> {
                 ),
               ),
               Card(
-                elevation: 5,
-                margin: EdgeInsets.only(top: 50),
+                elevation: 7,
+                margin: EdgeInsets.only(top: 30),
                 child: Container(
                   margin: EdgeInsets.all(30),
                   child: Column(

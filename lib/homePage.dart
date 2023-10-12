@@ -8,6 +8,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   String? selectedValue;
   final List items = [
     {
@@ -36,6 +37,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     dataAwal = items[0]['data'];
     return Scaffold(
+      key: _scaffoldKey,
       //AppBar
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 142, 232, 223),
@@ -52,7 +54,14 @@ class _HomePageState extends State<HomePage> {
           color: Colors.white,
         ),
         titleSpacing: 5,
-        actions: [],
+        actions: [
+          IconButton(
+            onPressed: () {
+              _scaffoldKey.currentState!.openEndDrawer();
+            },
+            icon: Icon(Icons.menu),
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -126,6 +135,7 @@ class _HomePageState extends State<HomePage> {
               alignment: Alignment.center,
               child: Card(
                 elevation: 10,
+                margin: EdgeInsets.only(top: 50),
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5),
@@ -146,7 +156,7 @@ class _HomePageState extends State<HomePage> {
                         context: context,
                         builder: (context) => AlertDialog(
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20),
+                            borderRadius: BorderRadius.circular(5),
                           ),
                           title: Text('Ini Judul'),
                           content:
@@ -301,6 +311,55 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
+            ),
+          ],
+        ),
+      ),
+      //Drawer
+      endDrawer: Drawer(
+        child: ListView(
+          children: [
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: Color.fromARGB(255, 142, 232, 223),
+              ),
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Page Drawer',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 25,
+                        color: Color(0xffff80d0),
+                        fontFamily: 'Urbanist Regular',
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.settings),
+              title: Text(
+                'Setting',
+                ),
+              onTap: () => null,
+            ),
+            ListTile(
+              leading: Icon(Icons.login),
+              title: Text(
+                'Login',
+              ),
+              onTap: () => null,
+            ),
+            ListTile(
+              leading: Icon(Icons.person_add_alt),
+              title: Text(
+                'Contact Person',
+              ),
+              onTap: () => null,
             ),
           ],
         ),
