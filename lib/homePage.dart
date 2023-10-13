@@ -96,7 +96,7 @@ class _HomePageState extends State<HomePage> {
               alignment: Alignment.center,
               child: Card(
                 child: Container(
-                  height: 100,
+                  height: 120,
                   width: double.infinity,
                   child: Container(
                     child: ListView.builder(
@@ -344,7 +344,7 @@ class _HomePageState extends State<HomePage> {
               leading: Icon(Icons.settings),
               title: Text(
                 'Setting',
-                ),
+              ),
               onTap: () => null,
             ),
             ListTile(
